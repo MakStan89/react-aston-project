@@ -1,9 +1,9 @@
 import React from 'react';
-import s from './Search.module.css';
+import './Search.css';
 
 const Search = () => {
 	return (
-		<div className={s.search}>
+		<div className='search'>
 			Search
 		</div>
 	);

@@ -1,12 +1,16 @@
 import React from 'react';
-import s from './SignUp.module.css';
+import './SignUp.css';
+import PropTypes from 'prop-types';
 
 const SignUp = () => {
+
+
 	return (
-		<div className={s.signUp}>
+		<div className='signUp'>
 			SignUp
 		</div>
 	);
 }
+
 
 export default SignUp;

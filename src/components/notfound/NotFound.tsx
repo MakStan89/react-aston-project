@@ -1,9 +1,9 @@
 import React from 'react';
-import s from './NotFound.module.css';
+import './NotFound.css';
 
 const NotFound = () => {
 	return (
-		<div className={s.notFound}>
+		<div className='notFound'>
 			NotFound
 		</div>
 	);

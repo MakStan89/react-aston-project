@@ -1,9 +1,9 @@
 import React from 'react';
-import s from './SignIn.module.css';
+import './SignIn.css';
 
 const SignIn = () => {
 	return (
-		<div className={s.signIn}>
+		<div className='signIn'>
 			SignIn
 		</div>
 	);
