@@ -28,7 +28,6 @@ const App = () => {
 					<Route path={AppPath.card} element={<Card />} />
 					<Route path={AppPath.signIn} element={<SignIn />} />
 					<Route path={AppPath.signUp} element={<SignUp />} />
-					<Route path={AppPath.signUp} element={<SignUp />} />
 					<Route path={AppPath.favourites} element={<Favourites />} />
 					<Route path={AppPath.notFound} element={<NotFound />} />
 				</Routes>

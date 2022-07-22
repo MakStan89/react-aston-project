@@ -1,16 +1,10 @@
-import React from 'react';
 import './SignUp.css';
-import PropTypes from 'prop-types';
+import AuthForm from '../authForm/AuthForm';
+
 
 const SignUp = () => {
 
-
-	return (
-		<div className='signUp'>
-			SignUp
-		</div>
-	);
-}
-
+	return <AuthForm header='Sign Up' />;
+};
 
 export default SignUp;

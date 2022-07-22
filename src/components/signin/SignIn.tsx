@@ -1,12 +1,10 @@
-import React from 'react';
 import './SignIn.css';
+import AuthForm from '../authForm/AuthForm';
+
 
 const SignIn = () => {
-	return (
-		<div className='signIn'>
-			SignIn
-		</div>
-	);
-}
+
+	return <AuthForm header='Sign In' />;
+};
 
 export default SignIn;

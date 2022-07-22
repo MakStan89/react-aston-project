@@ -3,6 +3,7 @@ import userReducer from './reducers/user-slice';
 import apiReducer from './reducers/user-slice';
 import historyReducer from './reducers/user-slice';
 import favoritesReducer from './reducers/user-slice';
+import localStorageReducer from './reducers/localStorage-slice';
 
 
 export const store = configureStore({
@@ -11,6 +12,7 @@ export const store = configureStore({
 		apiState: apiReducer,
 		historyState: historyReducer,
 		favouritesState: favoritesReducer,
+		localStorageState: localStorageReducer,
 	},
 });
 
