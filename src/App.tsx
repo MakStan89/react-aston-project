@@ -1,58 +1,39 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import './App.css';
+import ErrorBoundary from './components/ErrorBoundary';
+import Header from './components/header/Header';
+import Main from './components/main/Main';
+import Search from './components/search/Search';
+import History from './components/search/history/History';
+import Cards from './components/cards/Cards';
+import Card from './components/cards/card/Card';
+import SignIn from './components/signin/SignIn';
+import SignUp from './components/signup/SignUp';
+import Favourites from './components/favourites/Favourites';
+import NotFound from './components/notfound/NotFound';
+import { AppPath } from './constants/const';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
-  );
+
+const App = () => {
+	return (
+		<BrowserRouter>
+			<Header />
+			<ErrorBoundary>
+				<Routes>
+					<Route path={AppPath.main} element={<Main />} />
+					<Route path={AppPath.search} element={<Search />} />
+					<Route path={AppPath.history} element={<History />} />
+					<Route path={AppPath.cards} element={<Cards />} />
+					<Route path={AppPath.card} element={<Card />} />
+					<Route path={AppPath.signIn} element={<SignIn />} />
+					<Route path={AppPath.signUp} element={<SignUp />} />
+					<Route path={AppPath.favourites} element={<Favourites />} />
+					<Route path={AppPath.notFound} element={<NotFound />} />
+				</Routes>
+			</ErrorBoundary>
+		</BrowserRouter>
+	);
 }
 
 export default App;

@@ -1,0 +1,33 @@
+.header {
+	height: 150px;
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+}
+
+.header-title {
+	display: flex;
+	flex-grow: 1;
+	align-items: center;
+	justify-content: center;
+	background-color: aquamarine;
+}
+
+.header-title__link {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+.header-user {
+	display: flex;
+	justify-content: space-evenly;
+	width: 30%;
+	background-color: palegreen;
+}
+
+.header-user__link {
+	display: flex;
+	align-items: center;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
