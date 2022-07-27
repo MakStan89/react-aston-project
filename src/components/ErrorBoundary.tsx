@@ -1,7 +1,7 @@
 import React from 'react';
 
 type Props = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 class ErrorBoundary extends React.Component<Props, { hasError: boolean }> {
@@ -9,7 +9,7 @@ class ErrorBoundary extends React.Component<Props, { hasError: boolean }> {
 		super(props);
 		this.state = { hasError: false };
 	}
-
+	
 	static getDerivedStateFromError(error: any) {
 		return { hasError: true };
 	}

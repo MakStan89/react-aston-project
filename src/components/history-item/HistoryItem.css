@@ -1,0 +1,10 @@
+.history-item {
+	display: flex;
+}
+
+.history-item__index {
+}
+
+.history-item__field {
+	flex-grow: 1;
+}

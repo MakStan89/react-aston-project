@@ -1,0 +1,8 @@
+.hidden-card {
+	display: none;
+}
+
+.card-wrapper_image {
+	height: 200px;
+	width: 200px;
+}

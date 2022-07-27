@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { AuthTypes } from '../../constants/types'
-
+import { AuthTypes } from '../../types/types'
 
 const initialUserState: AuthTypes = {
 	isAuth: false,
@@ -57,5 +56,4 @@ const userSlice = createSlice({
 });
 
 export const { signUp, signIn, signOut, addFavourite, removeFavourite, addHistory, removeHistory } = userSlice.actions;
-
 export default userSlice.reducer;
