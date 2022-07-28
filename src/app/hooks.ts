@@ -1,6 +1,6 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import type { RootState, AppDispatch } from './store';
 import { useState, useRef } from 'react';
+import type { RootState, AppDispatch } from './store';
 
 const useValidation = (inputType: string) => {
 	const inputRef = useRef<HTMLInputElement>(null);
@@ -20,16 +20,15 @@ const useValidation = (inputType: string) => {
 		}
 	};
 
-	const submitHandler = (currentValue: string) => {
+	const validateHandler = (currentValue: string) => {
 		let isValid = validateInput(currentValue);
 		setIsInvalid(!isValid);
 
 		return isValid;
 	};
 
-	return { inputRef, isInvalid, submitHandler };
+	return { inputRef, isInvalid, validateHandler };
 };
-
 
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;

@@ -1,20 +1,22 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import userReducer from './reducers/user-slice';
-import apiReducer from './reducers/user-slice';
-import historyReducer from './reducers/user-slice';
+import filterReducer from './reducers/filter-slice';
 import favoritesReducer from './reducers/user-slice';
 import localStorageReducer from './reducers/localStorage-slice';
+import {apiSlice} from './reducers/api-slice';
 
 
 export const store = configureStore({
 	reducer: {
 		userState: userReducer,
-		apiState: apiReducer,
-		historyState: historyReducer,
+		filterState: filterReducer,
 		favouritesState: favoritesReducer,
 		localStorageState: localStorageReducer,
+		[apiSlice.reducerPath]: apiSlice.reducer,
 	},
+	middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiSlice.middleware),
 });
+
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;

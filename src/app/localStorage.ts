@@ -1,5 +1,4 @@
-import { UserTypes } from '../constants/types';
-
+import { UserTypes } from '../types/types';
 
 export const loginVerification = (login: string, registeredLogin: string) =>
 	!registeredLogin.includes(login);
@@ -8,7 +7,7 @@ export const emailVerification = (email: string, registeredEmail: string) =>
 	!registeredEmail.includes(email);
 
 export const saveNewUser = (login: string, email: string, history: string[], favourites: number[]) => {
-	const user = new UserClass(login, email, history, favourites);
+	const user = new User(login, email, history, favourites);
 	localStorage.setItem(login, JSON.stringify(user));
 };
 
@@ -23,7 +22,7 @@ export const loadUser = (login: string) => {
 };
 
 
-class UserClass {
+class User {
 	login: string;
 	email: string;
 	history: string[];

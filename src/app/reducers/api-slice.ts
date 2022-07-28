@@ -1,18 +1,44 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { API_PATH } from '../../constants/const';
 
+export const apiSlice = createApi({
 
-const initialApiState = {
-	
-};
+	reducerPath: 'apiSlice',
+	baseQuery: fetchBaseQuery({ baseUrl: API_PATH }),
 
-const apiSlice = createSlice({
-	name: 'api',
-	initialState: initialApiState,
+	endpoints: builder  => ({
+		getCards: builder.query({
+			query: (search) => `/search.php?s=${search}`,
+				transformResponse: (responseData: any) => {
+				const { drinks: drinksArray } = responseData;
+				return drinksArray;
+			},
+		}),
+		
+		getCardById: builder.query({
+			query: (id) => `/lookup.php?i=${id}`,
+			transformResponse: (responseData: any) => {
+				const { drinks: [item] } = responseData;
+				return item;
+			},
+		}),
+		
+		getCardByCategory: builder.query({
+			query: (category) => {
+				return {
+					url: `/filter.php?c=${category}`,
+				}
+			},
+		}),
 
-	reducers: {
-
-	}
+		getCardByAlcoholic: builder.query({
+			query: (alcoholic) => {
+				return {
+					url: `/filter.php?a=${alcoholic}`,
+				};
+			},
+		}),
+	}),
 });
 
-/*export const {  } = apiSlice.actions;*/
-export default apiSlice.reducer;
+export const { useGetCardsQuery, useGetCardByIdQuery, useGetCardByCategoryQuery, useGetCardByAlcoholicQuery } = apiSlice;

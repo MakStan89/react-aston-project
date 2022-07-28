@@ -1,0 +1,16 @@
+.history {
+	width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.history-title {
+}
+
+.history-header {
+	display: flex;
+}
+
+.history-header__item {
+	flex-grow: 1;
+}

@@ -7,8 +7,7 @@ import useValidation from '../../app/hooks';
 import { signUp } from '../../app/reducers/user-slice';
 import { setLogin } from '../../app/reducers/localStorage-slice';
 import { saveNewUser, loadUser } from '../../app/localStorage';
-import { AppPath } from '../../constants/const';
-
+import { APP_PATHS } from '../../constants/const';
 
 const AuthForm: React.FC<{ header: any }> = (props) => {
 	const dispatch = useAppDispatch();
@@ -17,13 +16,13 @@ const AuthForm: React.FC<{ header: any }> = (props) => {
 	const {
 		inputRef: inputLoginRef,
 		isInvalid: isLoginInvalid,
-		submitHandler: submitLoginHandler,
+		validateHandler: validateLoginHandler,
 	} = useValidation('login');
 
 	const {
 		inputRef: inputEmailRef,
 		isInvalid: isEmailInvalid,
-		submitHandler: submitEmailHandler,
+		validateHandler: validateEmailHandler,
 	} = useValidation('email');
 
 	const submitHandler = (ev: React.FormEvent) => {
@@ -31,18 +30,17 @@ const AuthForm: React.FC<{ header: any }> = (props) => {
 
 		const currentLogin = inputLoginRef.current!.value;
 		const currentEmail = inputEmailRef.current!.value;
-		const isLoginValid = submitLoginHandler(currentLogin);
-		const isEmailValid = submitEmailHandler(currentEmail);
+		const isLoginValid = validateLoginHandler(currentLogin);
+		const isEmailValid = validateEmailHandler(currentEmail);
 
 		if (isEmailValid && isLoginValid) {
 			dispatch(setLogin(currentLogin));
 			saveNewUser(currentLogin, currentEmail, [], []);
 			const user = loadUser(currentLogin);
 			dispatch(signUp(user));
-			navigate(AppPath.main);
+			navigate(APP_PATHS.main);
 		}
 	};
-
 
 	return (
 		<div className='signUp'>
@@ -67,7 +65,6 @@ const AuthForm: React.FC<{ header: any }> = (props) => {
 		</div>
 	);
 }
-
 
 AuthForm.propTypes = {
 	header: PropTypes.string,
