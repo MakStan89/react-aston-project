@@ -1,4 +1,3 @@
-import './SignUp.css';
 import AuthForm from '../authForm/AuthForm';
 
 const SignUp = () => {

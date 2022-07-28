@@ -3,7 +3,7 @@ export type AuthTypes = {
 	user: {
 		login: string;
 		email: string;
-		favourites: number[];
+		favourites: string[];
 		history: string[];
 	}
 }
@@ -11,7 +11,7 @@ export type AuthTypes = {
 export type UserTypes = {
 	login: string;
 	email: string;
-	favourites: number[];
+	favourites: string[];
 	history: string[];
 }
 

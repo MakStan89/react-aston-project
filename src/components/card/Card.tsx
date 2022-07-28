@@ -9,10 +9,9 @@ const Card = ({ idDrink, strDrink, strDrinkThumb, strCategory, strAlcoholic }: C
 
 	const user = useAppSelector(state => state.userState.user);
 	const dispatch = useAppDispatch();
-	const numId = Number(idDrink);
-	const changeLike = (favouriteState: boolean, id: number) =>
-		dispatch(favouriteState ? removeFavourite(id) : addFavourite(id));
-	const likeStatus = user.favourites.includes(numId) ? 'like' : 'unLike';
+	const changeLike = (favouriteState: boolean, idDrink: string) =>
+		dispatch(favouriteState ? removeFavourite(idDrink) : addFavourite(idDrink));
+	const likeStatus = user.favourites.includes(idDrink) ? 'card__like like' : 'card__like unLike';
 	const stateFilters = useAppSelector((state) => state.filterState);
 	const usedFiltres = takeUsedFiltres(stateFilters);
 	const categoryChoise = usedFiltres.strCategory;
@@ -30,7 +29,7 @@ const Card = ({ idDrink, strDrink, strDrinkThumb, strCategory, strAlcoholic }: C
 				<div className='card-wrapper'>
 					<img className='card-wrapper_image' src={strDrinkThumb} alt=''/>
 					<div className={likeStatus} role='button' onClick={(ev) => {
-						changeLike(user.favourites.includes(numId), numId);
+						changeLike(user.favourites.includes(idDrink), idDrink);
 						ev.preventDefault()
 					}}></div>
 				</div>
@@ -40,7 +39,6 @@ const Card = ({ idDrink, strDrink, strDrinkThumb, strCategory, strAlcoholic }: C
 					<h4 className='card-date__alcoholic'>{strAlcoholic}</h4>
 				</div>
 			</div>
-			
 		</>
 	);
 }

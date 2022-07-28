@@ -9,14 +9,15 @@ const CardInfo = (): JSX.Element => {
 
 	const user = useAppSelector(state => state.userState.user); 
 	const { id } = useParams();
-	const numId = Number(id);
+
 	const { data, isLoading, isError } = useGetCardByIdQuery(id);
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 
-	const changeLike = (favouriteState: boolean, id: number) =>
+	const strId = (id ?? 0).toString()
+	const changeLike = (favouriteState: boolean, id: string) =>
 		dispatch(favouriteState ? removeFavourite(id) : addFavourite(id));
-	const likeStatus = user.favourites.includes(numId) ? 'like' : 'unLike';
+	const likeStatus = user.favourites.includes(strId) ? 'like' : 'unLike';
 
 	return (
 		<>
@@ -26,7 +27,7 @@ const CardInfo = (): JSX.Element => {
 					<div className='card-info-wrapper'>
 						<img className='card-info-wrapper_image' src={data.strDrinkThumb} alt='' />
 						<div className={likeStatus} role='button' onClick={(ev) => {
-							changeLike(user.favourites.includes(numId), numId);
+							changeLike(user.favourites.includes(strId), strId);
 							ev.preventDefault()
 						}}></div>
 					</div>
