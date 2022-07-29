@@ -7,6 +7,7 @@ import { signOut } from '../../app/reducers/user-slice';
 
 const Header = (): JSX.Element => {
 	const isAuth = useAppSelector(state => state.userState.isAuth);
+	const login = useAppSelector(state => state.userState.user.login);
   const dispatch = useAppDispatch();
 
 	return (
@@ -17,6 +18,7 @@ const Header = (): JSX.Element => {
 			
 			{isAuth && (
 				<div className='header-user'>
+					<h2 className='header-user__login'>{login}</h2>
 					<Link to={APP_PATHS.favourites} className='header-user__link' >Favourites</Link>
 					<Link to={APP_PATHS.history} className='header-user__link'>History</Link>
 					<Link to={APP_PATHS.main} className='header-user__link' onClick={() => dispatch(signOut())} >Sign Out</Link>

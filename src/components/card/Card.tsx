@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Card.css';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { addFavourite, removeFavourite } from '../../app/reducers/user-slice'
 import { CardTypes } from '../../types/types';
 import { takeUsedFiltres } from '../../app/takeUsedFiltres';
+import { saveUserData } from '../../app/localStorage';
 
 const Card = ({ idDrink, strDrink, strDrinkThumb, strCategory, strAlcoholic }: CardTypes): JSX.Element => {
 
@@ -22,6 +23,8 @@ const Card = ({ idDrink, strDrink, strDrinkThumb, strCategory, strAlcoholic }: C
 			? 'hidden-card'
 			: 'card'
 	)
+	
+	useEffect(() => {saveUserData(user)}, [user]);
 
 	return (
 		<>

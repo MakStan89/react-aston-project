@@ -13,7 +13,7 @@ const useValidation = (inputType: string) => {
 				return pattern.test(input) && input.trim().length >= 4;
 
 			case 'email':
-				return input.trim().length >= 3 && input.includes('@');
+				return input.trim().length >= 4 && input.includes('@');
 
 			default:
 				console.log('Unknown input type');

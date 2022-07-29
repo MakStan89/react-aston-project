@@ -1,0 +1,25 @@
+.card-info-wrapper {
+	position: relative;
+	display: inline-block;
+}
+
+.card-info__like {
+	background-image: url("../../images/like.png");
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+	width: 7%;
+	height: 7%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	cursor: pointer;
+}
+
+.like {
+	opacity: 0.8;
+}
+
+.unlike {
+	opacity: 0.3;
+}

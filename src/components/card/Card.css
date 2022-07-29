@@ -21,14 +21,15 @@
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: contain;
+	cursor: pointer;
 }
 
 .like {
-	opacity: 0.5;
+	opacity: 0.8;
 }
 
 .unlike {
-	opacity: 0.1;
+	opacity: 0.3;
 }
 
 .hidden-card {

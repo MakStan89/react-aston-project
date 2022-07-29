@@ -5,6 +5,7 @@ export type AuthTypes = {
 		email: string;
 		favourites: string[];
 		history: string[];
+		localName: string;
 	}
 }
 
@@ -13,11 +14,17 @@ export type UserTypes = {
 	email: string;
 	favourites: string[];
 	history: string[];
+	localName: string;
 }
 
 export type SignUpTypes = {
 	login: string;
 	email: string;
+}
+
+export type RegisteredDateTypes = {
+	registeredLogin: string[];
+	registeredEmail: string[];
 }
 
 export type CardInfoTypes = {

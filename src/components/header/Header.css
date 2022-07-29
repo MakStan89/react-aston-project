@@ -21,8 +21,15 @@
 .header-user {
 	display: flex;
 	justify-content: space-evenly;
-	width: 30%;
+	width: 40%;
 	background-color: palegreen;
+}
+
+.header-user__login {
+	display: flex;
+	align-items: center;
+	margin-top: 50px;
+	margin-bottom: 50px;
 }
 
 .header-user__link {
