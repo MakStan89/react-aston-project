@@ -22,10 +22,11 @@
 	background-repeat: no-repeat;
 	background-size: contain;
 	cursor: pointer;
+	opacity: 0.3;
 }
 
 .like {
-	opacity: 0.8;
+	opacity: 1;
 }
 
 .unlike {

@@ -39,7 +39,7 @@ const userSlice = createSlice({
 		},
 
 		removeFavourite(state, action) {
-			state.user.favourites.filter((ev) => ev !== action.payload);
+			state.user.favourites = state.user.favourites.filter((id) => id !== action.payload);
 		},
 
 		addHistory(state, action) {

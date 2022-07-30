@@ -22,23 +22,7 @@ export const apiSlice = createApi({
 				return item;
 			},
 		}),
-		
-		getCardByCategory: builder.query({
-			query: (category) => {
-				return {
-					url: `/filter.php?c=${category}`,
-				}
-			},
-		}),
-
-		getCardByAlcoholic: builder.query({
-			query: (alcoholic) => {
-				return {
-					url: `/filter.php?a=${alcoholic}`,
-				};
-			},
-		}),
 	}),
 });
 
-export const { useGetCardsQuery, useGetCardByIdQuery, useGetCardByCategoryQuery, useGetCardByAlcoholicQuery } = apiSlice;
+export const { useGetCardsQuery, useGetCardByIdQuery } = apiSlice;
