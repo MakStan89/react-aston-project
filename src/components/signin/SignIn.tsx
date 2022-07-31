@@ -33,20 +33,20 @@ const SignIn = (): JSX.Element => {
 
 	return (
 		<div className='sign-in'>
-			<h1>Sign In</h1>
-			<form onSubmit={handleSubmit(onSubmit)} >
+			<h1 className='sign-in__title'>Sign In</h1>
+			<form onSubmit={handleSubmit(onSubmit)} className='sign-in__form form'>
 				<div className='form-item'>
-					<label>Login</label>
-					<input className='form-item__input' {...register('login', {
+					<label className='form-item__label'>Login</label>
+					<input className='form-item__input input' {...register('login', {
 						validate: { loginVerificat: (v) => !loginVerification(v, registeredLogins) || 'User does not exist' }
 					})} type='login' required 
 					/>
 					{errors.login && <div className="form__error">{errors.login.message}</div>}
 					{isLoginInvalid && <span>Login is invalid</span>}
 				</div>
-				<div>
-					<label>Email</label>
-					<input className='form-item__input' {...register('email', {
+				<div className='form-item'>
+					<label className='form-item__label'>Email</label>
+					<input className='form-item__input input' {...register('email', {
 						validate: {
 							emailVerificat: (v) => emailVerification(login.current.toString(), v) || 'Wrong password'
 						},
@@ -55,7 +55,7 @@ const SignIn = (): JSX.Element => {
 					{isEmailInvalid && <span>Email is invalid</span>}
 				</div>
 				<div>
-					<button className='form-button' type='submit'>
+					<button className='form-button button' type='submit'>
 						Sign In
 					</button>
 				</div>

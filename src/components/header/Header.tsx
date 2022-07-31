@@ -13,22 +13,26 @@ const Header = (): JSX.Element => {
 	return (
 		<header className='header'>
 			<div className='header-title'>
-				<Link to={APP_PATHS.main} className='header-title__link'>Title</Link>
+				<Link to={APP_PATHS.main} className='header-title__link'>COCKTAIL WORLD</Link>
 			</div>
 			
 			{isAuth && (
 				<div className='header-user'>
+					<div className='header-user-item'>
+						<Link to={APP_PATHS.favourites} className='header-user__link' >Favourites</Link>
+						<Link to={APP_PATHS.history} className='header-user__link'>History</Link>
+						<Link to={APP_PATHS.main} className='header-user__link' onClick={() => dispatch(signOut())} >Sign Out</Link>
+					</div>
 					<h2 className='header-user__login'>{login}</h2>
-					<Link to={APP_PATHS.favourites} className='header-user__link' >Favourites</Link>
-					<Link to={APP_PATHS.history} className='header-user__link'>History</Link>
-					<Link to={APP_PATHS.main} className='header-user__link' onClick={() => dispatch(signOut())} >Sign Out</Link>
 				</div>
 			)}
 
 			{!isAuth && (
 				<div className='header-user'>
-					<Link to={APP_PATHS.signIn} className='header-user__link'>Sign In</Link>
-					<Link to={APP_PATHS.signUp} className='header-user__link'>Sign Up</Link>
+					<div className='header-user-item'>
+						<Link to={APP_PATHS.signIn} className='header-user__link'>Sign In</Link>
+						<Link to={APP_PATHS.signUp} className='header-user__link'>Sign Up</Link>
+					</div>
 				</div>
 			)}
 		</header>

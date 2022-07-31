@@ -13,9 +13,9 @@ const History = (): JSX.Element => {
 	return (
 		<div className='history'>
 			<h2 className='history-title'>History:</h2>
-			<div role='button' className='history-clear' onClick={() => dispatch(removeHistory())}>
+			<button className='history-clear button' onClick={() => dispatch(removeHistory())}>
 				Clear
-			</div>
+			</button>
 			
 			<div className='history-header'>
 				<div className='history-header__item'>Index:</div>

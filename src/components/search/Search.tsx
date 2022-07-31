@@ -43,43 +43,45 @@ const Search = () => {
 	return (
 		<div className='search'>
 			<form onSubmit={handleSubmit(onSubmit)} className='search-form'>
-				<div className='search-form__wrapper'>
-					<label className='search-form__label-drink'>
-						<div className='search-form__title'>Drink:</div>
-						<input {...register('strDrink')} className='form__input-drink' />
-					</label>
-					<label className='search-form__label-category'>
-						<div className='search-form__title'>Category:</div>
-						<select {...register('strCategory')} className='search-form__select-category'>
+				<div className='search-form-selectors'>
+					<div className='search-form-item'>
+						<label className='search-form-item__title'>Drink:</label>
+						<input {...register('strDrink')} className='search-form-item__input input' />
+					</div>
+					<div className='search-form-item'>
+						<label className='search-form-item__title'>Category:</label>
+						<select {...register('strCategory')} className='search-form-item__input input'>
 							{CATEGORY.map((item) => (
 								<option key={item} value={item}>
 									{item}
 								</option>
 							))}
 						</select>
-					</label>
-					<label className='search-form__label-alcoholic'>
-						<div className='form__label-title'>Alcoholic:</div>
-						<select {...register('strAlcoholic')} className='search-form__select-alcoholic'>
+					</div>
+					<div className='search-form-item'>
+						<label className='search-form-item__title'>Alcoholic:</label>
+						<select {...register('strAlcoholic')} className='search-form-item__input input'>
 							{ALCOHOLIC.map((item) => (
 								<option key={item} value={item}>
 									{item}
 								</option>
 							))}
 						</select>
-					</label>
+					</div>
 				</div>
-				<input type='submit' value='Submit' className='form__submit' />
-				<input type='reset' value='Reset' className='form__reset' onClick={() => {
-						reset();
-						handleSubmit(onSubmit)();
-					}}
-				/>
+				<div className='search-form-buttons'>
+					<input type='submit' value='Submit' className='search-form__submit button' />
+					<input type='reset' value='Reset' className='search-form__reset button' onClick={() => {
+							reset();
+							handleSubmit(onSubmit)();
+						}}
+					/>
+				</div>
 			</form>
 
 			{isLoading && <h2 className='loading'>Loading...</h2>}
 			{isError && <h2 className='search__error'>Something went wrong...</h2>}
-			{!!data?.length && (
+			{data?.length &&  (
 				<CardsBoard cardsArray={data} />
 			)}
 		</div>

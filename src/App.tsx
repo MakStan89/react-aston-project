@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import './App.css';
 import ErrorBoundary from './components/ErrorBoundary';
@@ -15,10 +16,12 @@ import { APP_PATHS } from './constants/const';
 
 
 const App = () => {
+	const [theme, setTheme] = useState('dark');
 
 	return (
 		<BrowserRouter>
-			<Header />
+			<ThemeContext.Provider value='dark'>
+				<Header />
 				<ErrorBoundary>
 						<Routes>
 							<Route path={APP_PATHS.main} element={<Main />} />
@@ -31,8 +34,10 @@ const App = () => {
 							<Route path={APP_PATHS.notFound} element={<NotFound />} />
 						</Routes>
 				</ErrorBoundary>
+			</ThemeContext.Provider>
 		</BrowserRouter>
 	);
 }
 
 export default App;
+export const ThemeContext = React.createContext('dark');

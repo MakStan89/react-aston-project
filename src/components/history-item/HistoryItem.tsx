@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './HistoryItem.css';
 import { HistoryTypes} from '../../types/types';
 
@@ -10,7 +11,7 @@ const HistoryItem = ({ card, index }: HistoryTypes): JSX.Element => {
 	return (
 		<div className='history-item'>
 			<div className='history-item__field'>
-				&nbsp;&nbsp;&nbsp;&nbsp;<span>{index}</span>
+				<span>{index}</span>
 			</div>
 			<div className='history-item__field'>
 				<span>{strDrink}</span>
@@ -24,5 +25,10 @@ const HistoryItem = ({ card, index }: HistoryTypes): JSX.Element => {
 		</div>
 	);
 }
+
+HistoryItem.propTypes = {
+	card: PropTypes.object,
+	index: PropTypes.number
+};
 
 export default HistoryItem;

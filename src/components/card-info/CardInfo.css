@@ -1,14 +1,40 @@
 .card-info-wrapper {
-	position: relative;
-	display: inline-block;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
 }
 
-.card-info__like {
+.card-info {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.card-info-image {
+	position: relative;
+	width: 45%;
+	display: flex;
+}
+
+.card-info-image {
+	justify-content: end;
+}
+
+.card-info-data {
+	position: relative;
+	width: 45%;
+	font-size: 20px;
+}
+
+.card-info-img__like {
 	background-image: url("../../images/like.png");
 	position: absolute;
 	bottom: 20px;
 	right: 20px;
-	width: 7%;
+	width: 10%;
 	height: 7%;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -23,4 +49,16 @@
 
 .unlike {
 	opacity: 0.3;
+}
+
+.data__title {
+	margin-bottom: 30px;
+}
+
+.data-info__item {
+	margin-bottom: 20px;
+}
+
+.card-info-button {
+	margin-top: 10px;
 }

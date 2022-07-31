@@ -5,10 +5,11 @@ import { addFavourite, removeFavourite } from '../../app/reducers/user-slice'
 import { CardTypes } from '../../types/types';
 import { takeUsedFiltres } from '../../app/takeUsedFiltres';
 import { saveUserData } from '../../app/localStorage';
+import { Link } from 'react-router-dom';
+import { APP_PATHS } from '../../constants/const';
 
 const Card = ({ idDrink, strDrink, strDrinkThumb, strCategory, strAlcoholic }: CardTypes): JSX.Element => {
 
-	const isAuth = useAppSelector(state => state.userState.user);
 	const user = useAppSelector(state => state.userState.user);
 	const dispatch = useAppDispatch();
 	const changeLike = (isFavourite: boolean, id: string) =>
@@ -28,20 +29,20 @@ const Card = ({ idDrink, strDrink, strDrinkThumb, strCategory, strAlcoholic }: C
 	return (
 		<>
 			<div className={hiddenClass}>
-				<div className='card-wrapper'>
-					<img className='card-wrapper_image' src={strDrinkThumb} alt='' />
-					{isAuth && (
+				<Link to={`${APP_PATHS.search}/${idDrink}`} className='cardLink' key={idDrink}>
+					<div className='card-wrapper'>
+						<img className='card-wrapper_image' src={strDrinkThumb} alt='' />
 						<div className={likeStatus} role='button' onClick={(ev) => {
 							changeLike(user.favourites.includes(idDrink), idDrink);
 							ev.preventDefault()
-						}}></div>)
-					}
-				</div>
-				<div className='card-date'>
-					<h2 className='card-date__drink'>{strDrink}</h2>
-					<h4 className='card-date__category'>{strCategory}</h4>
-					<h4 className='card-date__alcoholic'>{strAlcoholic}</h4>
-				</div>
+						}}></div>
+					</div>
+					<div className='card-data'>
+						<h2 className='card-data__title'>{strDrink}</h2>
+						<h5 className='card-data__type'>{strCategory}</h5>
+						<h4 className='card-data__type'>{strAlcoholic}</h4>
+					</div>
+				</Link>
 			</div>
 		</>
 	);

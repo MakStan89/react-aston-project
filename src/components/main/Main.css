@@ -1,6 +1,34 @@
 .main {
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	flex-grow: 1;
+}
+
+.main__text {
+	font-size: 25px;
+	margin-bottom: 40px;
+}
+
+.input {
+	width: 250px;
+	height: 30px;
+	border: 2px solid black;
+	border-radius: 5px;
+	text-align: center;
+	font-size: 18px;
+}
+
+.main-search__input {
+	margin-right: 10px;
+}
+
+.button {
+	width: 100px;
+	height: 30px;
+	border: 2px solid black;
+	border-radius: 5px;
+	background-color: bisque;
+	font-size: 18px;
 }
