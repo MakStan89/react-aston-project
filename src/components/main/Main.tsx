@@ -1,12 +1,12 @@
 import React, { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import './Main.css';
+import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../app/hooks';
-import { APP_PATHS, KEY_CODES } from '../../constants/const';
 import { addHistory } from '../../app/reducers/user-slice';
-import { defaultFiltersValues } from '../../filters/filters';
 import { changeAllFilters } from '../../app/reducers/filter-slice';
 import { ThemeContext } from '../../App';
+import { APP_PATHS, KEY_CODES } from '../../constants/const';
+import { defaultFiltersValues } from '../../filters/filters';
 
 const Main = (): JSX.Element => {
 	const [inputValue, setInputValue] = useState('');

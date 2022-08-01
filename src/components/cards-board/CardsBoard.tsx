@@ -1,7 +1,7 @@
 import React from 'react';
+import './CardsBoard.css';
 import { CardInfoTypesArray, CardTypes } from '../../types/types';
 import Card from '../card/Card';
-import './CardsBoard.css';
 
 const CardsBoard = ({ cardsArray }: CardInfoTypesArray ): JSX.Element => {
 

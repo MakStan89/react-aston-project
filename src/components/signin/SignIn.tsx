@@ -13,8 +13,8 @@ const SignIn = (): JSX.Element => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 
-	const {isInvalid: isLoginInvalid} = useValidation('login');
-
+	const { isInvalid: isLoginInvalid } = useValidation('login');
+	
 	const {isInvalid: isEmailInvalid} = useValidation('email');
 
 	const { register, handleSubmit, reset, watch, formState: { errors } } = useForm<SignUpTypes>({

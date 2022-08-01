@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import './Card.css';
+import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { addFavourite, removeFavourite } from '../../app/reducers/user-slice'
 import { CardTypes } from '../../types/types';
+import { APP_PATHS } from '../../constants/const';
 import { takeUsedFiltres } from '../../app/takeUsedFiltres';
 import { saveUserData } from '../../app/localStorage';
-import { Link } from 'react-router-dom';
-import { APP_PATHS } from '../../constants/const';
 
 const Card = ({ idDrink, strDrink, strDrinkThumb, strCategory, strAlcoholic }: CardTypes): JSX.Element => {
 
@@ -31,7 +31,7 @@ const Card = ({ idDrink, strDrink, strDrinkThumb, strCategory, strAlcoholic }: C
 			<div className={hiddenClass}>
 				<Link to={`${APP_PATHS.search}/${idDrink}`} className='cardLink' key={idDrink}>
 					<div className='card-wrapper'>
-						<img className='card-wrapper_image' src={strDrinkThumb} alt='' />
+						<img className='card-wrapper__image' src={strDrinkThumb} alt='' />
 						<div className={likeStatus} role='button' onClick={(ev) => {
 							changeLike(user.favourites.includes(idDrink), idDrink);
 							ev.preventDefault()

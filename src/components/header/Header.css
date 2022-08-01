@@ -4,15 +4,15 @@
 	justify-content: space-between;
 }
 
-.theme-bisque {
+.theme-b {
 	background: rgba(255, 228, 196, 0.7);
 }
 
-.theme-white {
+.theme-w {
 	background: rgba(255, 255, 255, 0.7);
 }
 
-.theme-skyblue {
+.theme-s {
 	background: rgba(135, 206, 235, 0.7);
 }
 
@@ -84,13 +84,25 @@
 }
 
 .theme__bisque {
-	background-color: bisque;
+	background: rgba(255, 228, 196, 0.7);
+}
+
+.theme__bisque:hover {
+	box-shadow: 0 0 10px 0 #ffe4c4 inset, 0 0 10px 4px #ffe4c4;
 }
 
 .theme__white {
-	background-color: white;
+	background: rgba(255, 255, 255, 0.7);
+}
+
+.theme__white:hover {
+	box-shadow: 0 0 10px 0 #ffffff inset, 0 0 10px 4px #ffffff;
 }
 
 .theme__skyblue {
-	background-color: skyblue;
+	background: rgba(135, 206, 235, 0.7);
+}
+
+.theme__skyblue:hover {
+	box-shadow: 0 0 10px 0 #87ceeb inset, 0 0 10px 4px #87ceeb;
 }

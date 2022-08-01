@@ -64,3 +64,8 @@ export type ThemeTypes = {
   colorTheme: string;
 };
 
+export type ProtectorType = {
+  children?: React.ReactNode;
+};
+
+

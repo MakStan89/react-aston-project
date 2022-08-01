@@ -1,17 +1,17 @@
+import './Search.css';
 import { createSearchParams, useSearchParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import './Search.css';
-import { useGetCardsQuery } from '../../app/reducers/api-slice';
-import CardsBoard from '../cards-board/CardsBoard';
-import { useAppSelector, useAppDispatch } from '../../app/hooks';
-import { takeUsedFiltres } from '../../app/takeUsedFiltres';
-import { CardInfoTypes } from '../../types/types';
-import { defaultFiltersValues } from '../../filters/filters';
-import { addHistory } from '../../app/reducers/user-slice';
-import { ALCOHOLIC, CATEGORY } from '../../constants/const';
-import { changeAllFilters } from '../../app/reducers/filter-slice';
 import { useContext } from 'react';
 import { ThemeContext } from '../../App';
+import CardsBoard from '../cards-board/CardsBoard';
+import { useGetCardsQuery } from '../../app/reducers/api-slice';
+import { addHistory } from '../../app/reducers/user-slice';
+import { useAppSelector, useAppDispatch } from '../../app/hooks';
+import { takeUsedFiltres } from '../../app/takeUsedFiltres';
+import { changeAllFilters } from '../../app/reducers/filter-slice';
+import { CardInfoTypes } from '../../types/types';
+import { defaultFiltersValues } from '../../filters/filters';
+import { ALCOHOLIC, CATEGORY } from '../../constants/const';
 
 const Search = () => {
 	const dispatch = useAppDispatch();
@@ -94,7 +94,6 @@ const Search = () => {
 		</div>
 	);
 };
-
 
 export default Search;
 

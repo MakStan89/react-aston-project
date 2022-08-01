@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './Header.css';
+import { Link } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { APP_PATHS } from '../../constants/const';
 import { signOut } from '../../app/reducers/user-slice';
@@ -11,7 +11,7 @@ const Header = (): JSX.Element => {
 	const login = useAppSelector(state => state.userState.user.login);
 	const dispatch = useAppDispatch();
 	const theme = useAppSelector(state => state.contextState.colorTheme)
-	const headerTheme = (theme === 'bisque' ? 'header theme-bisque' : theme === 'white' ? 'header theme-white' : 'header theme-skyblue');
+	const headerTheme = (theme === 'bisque' ? 'header theme-b' : theme === 'white' ? 'header theme-w' : 'header theme-s');
 
 	return (
 		<header className={headerTheme}>

@@ -5,7 +5,6 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { useGetCardByIdQuery } from '../../app/reducers/api-slice';
 import { addFavourite, removeFavourite } from '../../app/reducers/user-slice';
 import { APP_PATHS } from '../../constants/const';
-import './FavouritesItem.css';
 
 const FavouritesItem = (id: any): JSX.Element => {
 
@@ -25,7 +24,7 @@ const FavouritesItem = (id: any): JSX.Element => {
 			<Link to={`${APP_PATHS.search}/${data.idDrink}`} className='cardLink' key={data.idDrink}>
 				<div className='card'>
 					<div className='card-wrapper'>
-						<img className='card-wrapper_image' src={data.strDrinkThumb} alt=''/>
+						<img className='card-wrapper__image' src={data.strDrinkThumb} alt=''/>
 						<div className={likeStatus} role='button' onClick={(ev) => {
 							changeLike(user.favourites.includes(strId), strId);
 							ev.preventDefault()
