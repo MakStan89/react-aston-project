@@ -41,7 +41,7 @@ const SignIn = (): JSX.Element => {
 						validate: { loginVerificat: (v) => !loginVerification(v, registeredLogins) || 'User does not exist' }
 					})} type='login' required 
 					/>
-					{errors.login && <div className="form__error">{errors.login.message}</div>}
+					{errors.login && <div className='form__error'>{errors.login.message}</div>}
 					{isLoginInvalid && <span>Login is invalid</span>}
 				</div>
 				<div className='form-item'>
@@ -51,7 +51,7 @@ const SignIn = (): JSX.Element => {
 							emailVerificat: (v) => emailVerification(login.current.toString(), v) || 'Wrong password'
 						},
 					})} type='email' required  />
-					{errors.email && <div className="form__error">{errors.email.message}</div>}
+					{errors.email && <div className='form__error'>{errors.email.message}</div>}
 					{isEmailInvalid && <span>Email is invalid</span>}
 				</div>
 				<div>

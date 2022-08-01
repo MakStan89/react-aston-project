@@ -10,6 +10,8 @@ import { defaultFiltersValues } from '../../filters/filters';
 import { addHistory } from '../../app/reducers/user-slice';
 import { ALCOHOLIC, CATEGORY } from '../../constants/const';
 import { changeAllFilters } from '../../app/reducers/filter-slice';
+import { useContext } from 'react';
+import { ThemeContext } from '../../App';
 
 const Search = () => {
 	const dispatch = useAppDispatch();
@@ -39,6 +41,11 @@ const Search = () => {
 	const usedFiltres = takeUsedFiltres(stateFilters);
 	const currentInput = Object.values(usedFiltres)[0];
 	const { data, isLoading, isError } = useGetCardsQuery(currentInput);
+	const theme = useContext(ThemeContext);
+	const searchSubmitTheme = (theme === 'bisque' ? 'search-form__submit button theme-bisque' : theme === 'white'
+		? 'search-form__submit button theme-white' : 'search-form__submit button theme-skyblue');
+	const searchResetTheme = (theme === 'bisque' ? 'search-form__reset button theme-bisque' : theme === 'white'
+		? 'search-form__reset button theme-white' : 'search-form__reset button theme-skyblue');
 	
 	return (
 		<div className='search'>
@@ -70,8 +77,8 @@ const Search = () => {
 					</div>
 				</div>
 				<div className='search-form-buttons'>
-					<input type='submit' value='Submit' className='search-form__submit button' />
-					<input type='reset' value='Reset' className='search-form__reset button' onClick={() => {
+					<input type='submit' value='Submit' className={searchSubmitTheme} />
+					<input type='reset' value='Reset' className={searchResetTheme} onClick={() => {
 							reset();
 							handleSubmit(onSubmit)();
 						}}
@@ -90,3 +97,5 @@ const Search = () => {
 
 
 export default Search;
+
+

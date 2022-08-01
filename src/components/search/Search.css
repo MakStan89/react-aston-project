@@ -33,3 +33,15 @@
 .search-form__submit {
 	margin-right: 20px;
 }
+
+.theme-bisque {
+	background: rgba(255, 228, 196, 0.7);
+}
+
+.theme-white {
+	background: rgba(255, 255, 255, 0.7);
+}
+
+.theme-skyblue {
+	background: rgba(135, 206, 235, 0.7);
+}

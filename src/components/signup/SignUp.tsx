@@ -45,13 +45,13 @@ const SignUp = (): JSX.Element => {
 						}
 					})} type='login' required 
 					/>
-					{errors.login && <div className="form__error">{errors.login.message}</div>}
+					{errors.login && <div className='form__error'>{errors.login.message}</div>}
 					{isLoginInvalid && <span>Login is invalid</span>}
 				</div>
 				<div className='form-item'>
 					<label className='form-item__label'>Email</label>
 					<input className='form-item__input input' {...register('email')} type='email' required />
-					{errors.email && <div className="form__error">{errors.email.message}</div>}
+					{errors.email && <div className='form__error'>{errors.email.message}</div>}
 					{isEmailInvalid && <span>Email is invalid</span>}
 				</div>
 				<div>

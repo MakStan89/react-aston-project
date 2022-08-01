@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import './App.css';
 import ErrorBoundary from './components/ErrorBoundary';
@@ -13,14 +13,16 @@ import History from './components/history/History';
 import CardInfo from './components/card-info/CardInfo';
 import AuthBlock from './components/AuthBlock';
 import { APP_PATHS } from './constants/const';
+import { useAppSelector } from './app/hooks';
 
+export const ThemeContext = React.createContext('bisque');
 
 const App = () => {
-	const [theme, setTheme] = useState('dark');
+	const theme = useAppSelector(state => state.contextState.colorTheme)
 
 	return (
 		<BrowserRouter>
-			<ThemeContext.Provider value='dark'>
+			<ThemeContext.Provider value={theme}>
 				<Header />
 				<ErrorBoundary>
 						<Routes>
@@ -40,4 +42,3 @@ const App = () => {
 }
 
 export default App;
-export const ThemeContext = React.createContext('dark');

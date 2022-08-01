@@ -29,6 +29,18 @@
 	height: 30px;
 	border: 2px solid black;
 	border-radius: 5px;
-	background-color: bisque;
 	font-size: 18px;
+	cursor: pointer;
+}
+
+.theme-bisque {
+	background: rgba(255, 228, 196, 0.7);
+}
+
+.theme-white {
+	background: rgba(255, 255, 255, 0.7);
+}
+
+.theme-skyblue {
+	background: rgba(135, 206, 235, 0.7);
 }

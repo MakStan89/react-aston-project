@@ -5,6 +5,18 @@
 	padding-bottom: 10px;
 }
 
+.theme-bisque {
+	background: rgba(255, 228, 196, 0.7);
+}
+
+.theme-white {
+	background: rgba(255, 255, 255, 0.7);
+}
+
+.theme-skyblue {
+	background: rgba(135, 206, 235, 0.7);
+}
+
 .history-item__field {
 	flex-grow: 1;
 	width: 25%;

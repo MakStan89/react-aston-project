@@ -60,4 +60,7 @@ export type HistoryTypes = {
 	index: number;
 };
 
+export type ThemeTypes = {
+  colorTheme: string;
+};
 
