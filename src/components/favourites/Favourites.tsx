@@ -11,7 +11,6 @@ const Favourites = () => {
 	return (
 
 		<div className='favourites'>
-			
 			{favourites.map((el) => (
 				<FavouritesItem id={el} key={count++} />
 			))}

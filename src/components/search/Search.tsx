@@ -1,15 +1,17 @@
+import './Search.css';
 import { createSearchParams, useSearchParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import './Search.css';
-import { useGetCardsQuery } from '../../app/reducers/api-slice';
+import { useContext } from 'react';
+import { ThemeContext } from '../../App';
 import CardsBoard from '../cards-board/CardsBoard';
+import { useGetCardsQuery } from '../../app/reducers/api-slice';
+import { addHistory } from '../../app/reducers/user-slice';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { takeUsedFiltres } from '../../app/takeUsedFiltres';
+import { changeAllFilters } from '../../app/reducers/filter-slice';
 import { CardInfoTypes } from '../../types/types';
 import { defaultFiltersValues } from '../../filters/filters';
-import { addHistory } from '../../app/reducers/user-slice';
 import { ALCOHOLIC, CATEGORY } from '../../constants/const';
-import { changeAllFilters } from '../../app/reducers/filter-slice';
 
 const Search = () => {
 	const dispatch = useAppDispatch();
@@ -39,52 +41,60 @@ const Search = () => {
 	const usedFiltres = takeUsedFiltres(stateFilters);
 	const currentInput = Object.values(usedFiltres)[0];
 	const { data, isLoading, isError } = useGetCardsQuery(currentInput);
+	const theme = useContext(ThemeContext);
+	const searchSubmitTheme = (theme === 'bisque' ? 'search-form__submit button theme-bisque' : theme === 'white'
+		? 'search-form__submit button theme-white' : 'search-form__submit button theme-skyblue');
+	const searchResetTheme = (theme === 'bisque' ? 'search-form__reset button theme-bisque' : theme === 'white'
+		? 'search-form__reset button theme-white' : 'search-form__reset button theme-skyblue');
 	
 	return (
 		<div className='search'>
 			<form onSubmit={handleSubmit(onSubmit)} className='search-form'>
-				<div className='search-form__wrapper'>
-					<label className='search-form__label-drink'>
-						<div className='search-form__title'>Drink:</div>
-						<input {...register('strDrink')} className='form__input-drink' />
-					</label>
-					<label className='search-form__label-category'>
-						<div className='search-form__title'>Category:</div>
-						<select {...register('strCategory')} className='search-form__select-category'>
+				<div className='search-form-selectors'>
+					<div className='search-form-item'>
+						<label className='search-form-item__title'>Drink:</label>
+						<input {...register('strDrink')} className='search-form-item__input input' />
+					</div>
+					<div className='search-form-item'>
+						<label className='search-form-item__title'>Category:</label>
+						<select {...register('strCategory')} className='search-form-item__input input'>
 							{CATEGORY.map((item) => (
 								<option key={item} value={item}>
 									{item}
 								</option>
 							))}
 						</select>
-					</label>
-					<label className='search-form__label-alcoholic'>
-						<div className='form__label-title'>Alcoholic:</div>
-						<select {...register('strAlcoholic')} className='search-form__select-alcoholic'>
+					</div>
+					<div className='search-form-item'>
+						<label className='search-form-item__title'>Alcoholic:</label>
+						<select {...register('strAlcoholic')} className='search-form-item__input input'>
 							{ALCOHOLIC.map((item) => (
 								<option key={item} value={item}>
 									{item}
 								</option>
 							))}
 						</select>
-					</label>
+					</div>
 				</div>
-				<input type='submit' value='Submit' className='form__submit' />
-				<input type='reset' value='Reset' className='form__reset' onClick={() => {
-						reset();
-						handleSubmit(onSubmit)();
-					}}
-				/>
+				<div className='search-form-buttons'>
+					<input type='submit' value='Submit' className={searchSubmitTheme} />
+					<input type='reset' value='Reset' className={searchResetTheme} onClick={() => {
+							reset();
+							handleSubmit(onSubmit)();
+						}}
+					/>
+				</div>
 			</form>
 
 			{isLoading && <h2 className='loading'>Loading...</h2>}
 			{isError && <h2 className='search__error'>Something went wrong...</h2>}
-			{!!data?.length && (
+			{data?.length &&  (
 				<CardsBoard cardsArray={data} />
 			)}
 		</div>
 	);
 };
 
-
 export default Search;
+
+

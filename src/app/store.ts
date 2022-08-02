@@ -3,8 +3,9 @@ import userReducer from './reducers/user-slice';
 import filterReducer from './reducers/filter-slice';
 import favoritesReducer from './reducers/user-slice';
 import localStorageReducer from './reducers/localStorage-slice';
-import {apiSlice} from './reducers/api-slice';
-
+import contextReducer from './reducers/context-slice';
+import { apiSlice } from './reducers/api-slice';
+import { localStorageMiddleware } from './localStorageMiddleware';
 
 export const store = configureStore({
 	reducer: {
@@ -12,9 +13,10 @@ export const store = configureStore({
 		filterState: filterReducer,
 		favouritesState: favoritesReducer,
 		localStorageState: localStorageReducer,
+		contextState: contextReducer,
 		[apiSlice.reducerPath]: apiSlice.reducer,
 	},
-	middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiSlice.middleware),
+	middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiSlice.middleware, localStorageMiddleware),
 });
 
 

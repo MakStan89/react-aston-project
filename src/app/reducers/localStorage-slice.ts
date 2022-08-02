@@ -1,12 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { loadLoginsFromLS } from '../localStorage';
 
-const initialState: string[] = [];
+const loginsInLS = loadLoginsFromLS()
+const initialState: string[] = loginsInLS;
 
 const localStorageSlice = createSlice({
-
 	name: 'localStorage',
 	initialState,
+
 	reducers: {
+		
 		setLogin(state, action) {
 			state.push(action.payload.toLowerCase());
 		},

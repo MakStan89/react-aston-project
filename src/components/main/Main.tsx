@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
 import './Main.css';
+import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../app/hooks';
-import { APP_PATHS, KEY_CODES } from '../../constants/const';
 import { addHistory } from '../../app/reducers/user-slice';
-import { defaultFiltersValues } from '../../filters/filters';
 import { changeAllFilters } from '../../app/reducers/filter-slice';
+import { ThemeContext } from '../../App';
+import { APP_PATHS, KEY_CODES } from '../../constants/const';
+import { defaultFiltersValues } from '../../filters/filters';
 
 const Main = (): JSX.Element => {
 	const [inputValue, setInputValue] = useState('');
@@ -18,19 +19,28 @@ const Main = (): JSX.Element => {
 	
 	const navigateTo = (value: string) => {
 		dispatch(addHistory({ ...defaultFiltersValues, strDrink: value }))
-		dispatch(changeAllFilters({ strDrink: value }))
-		navigate(`${APP_PATHS.search}/?strDrink=${inputValue}`);
+		if (value) {
+			dispatch(changeAllFilters({ strDrink: value }))
+			navigate(`${APP_PATHS.search}/?strDrink=${inputValue}`);
+		} else {
+			dispatch(changeAllFilters({ strDrink: ' ' }))
+			navigate(`${APP_PATHS.search}`);
+		}
 	}
 	const onKeyDown = (ev: { keyCode: number }) => {
 		if (ev.keyCode === KEY_CODES.enter) navigateTo(inputValue);
 	};
+	const theme = useContext(ThemeContext);
+	const mainTheme = (theme === 'bisque' ? 'main-search__button button theme-bisque' : theme === 'white' ? 'main-search__button button theme-white' : 'main-search__button button theme-skyblue');
 
 	return (
 		<div className='main'>
-			<h2 className='main__title'>Cocktails search</h2>
-			<div>
-				<input className='main__input' type='text' value={inputValue} onChange={onChange} onKeyDown={onKeyDown} />
-				<button className='main__button' onClick={()=>navigateTo(inputValue)}>
+			<div className='main__text'>
+				<p>Here you can find any cocktails to your taste</p>
+			</div>
+			<div className='main-search'>
+				<input className='main-search__input input' type='text' value={inputValue} onChange={onChange} onKeyDown={onKeyDown} />
+				<button className={mainTheme} onClick={()=>navigateTo(inputValue)}>
 					Search
 				</button>
 			</div>

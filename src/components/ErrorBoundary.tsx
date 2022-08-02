@@ -1,11 +1,8 @@
 import React from 'react';
+import { ProtectorType } from '../types/types';
 
-type Props = {
-  children?: React.ReactNode;
-};
-
-class ErrorBoundary extends React.Component<Props, { hasError: boolean }> {
-	constructor(props: Props) {
+class ErrorBoundary extends React.Component<ProtectorType, { hasError: boolean }> {
+	constructor(props: ProtectorType) {
 		super(props);
 		this.state = { hasError: false };
 	}

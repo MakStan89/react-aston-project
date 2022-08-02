@@ -8,6 +8,7 @@ const initialUserState: AuthTypes = {
 		email: '',
 		favourites: [],
 		history: [],
+		localName: '',
 	},
 };
 
@@ -16,11 +17,6 @@ const userSlice = createSlice({
 	initialState: initialUserState,
 
 	reducers: {
-		
-		signUp(state, action) {
-			state.isAuth = true;
-			state.user = action.payload;
-		},
 
 		signIn(state, action) {
 			state.isAuth = true;
@@ -34,6 +30,7 @@ const userSlice = createSlice({
 				email: '',
 				favourites: [],
 				history: [],
+				localName: '',
 			}
 		},
 		
@@ -42,7 +39,7 @@ const userSlice = createSlice({
 		},
 
 		removeFavourite(state, action) {
-			state.user.favourites.filter((e) => e !== action.payload);
+			state.user.favourites = state.user.favourites.filter((id) => id !== action.payload);
 		},
 
 		addHistory(state, action) {
@@ -55,5 +52,5 @@ const userSlice = createSlice({
 	},
 });
 
-export const { signUp, signIn, signOut, addFavourite, removeFavourite, addHistory, removeHistory } = userSlice.actions;
+export const { signIn, signOut, addFavourite, removeFavourite, addHistory, removeHistory } = userSlice.actions;
 export default userSlice.reducer;

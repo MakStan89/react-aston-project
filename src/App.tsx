@@ -1,3 +1,4 @@
+import React from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import './App.css';
 import ErrorBoundary from './components/ErrorBoundary';
@@ -12,13 +13,17 @@ import History from './components/history/History';
 import CardInfo from './components/card-info/CardInfo';
 import AuthBlock from './components/AuthBlock';
 import { APP_PATHS } from './constants/const';
+import { useAppSelector } from './app/hooks';
 
+export const ThemeContext = React.createContext('bisque');
 
 const App = () => {
+	const theme = useAppSelector(state => state.contextState.colorTheme)
 
 	return (
 		<BrowserRouter>
-			<Header />
+			<ThemeContext.Provider value={theme}>
+				<Header />
 				<ErrorBoundary>
 						<Routes>
 							<Route path={APP_PATHS.main} element={<Main />} />
@@ -31,6 +36,7 @@ const App = () => {
 							<Route path={APP_PATHS.notFound} element={<NotFound />} />
 						</Routes>
 				</ErrorBoundary>
+			</ThemeContext.Provider>
 		</BrowserRouter>
 	);
 }
