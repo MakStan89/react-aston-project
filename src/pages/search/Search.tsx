@@ -3,7 +3,7 @@ import { createSearchParams, useSearchParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useContext } from 'react';
 import { ThemeContext } from '../../App';
-import CardsBoard from '../cards-board/CardsBoard';
+import CardsBoard from '../../components/cards-board/CardsBoard';
 import { useGetCardsQuery } from '../../app/reducers/api-slice';
 import { addHistory } from '../../app/reducers/user-slice';
 import { useAppSelector, useAppDispatch, useClass } from '../../app/hooks';

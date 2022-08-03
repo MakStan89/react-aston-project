@@ -1,7 +1,7 @@
 import React from 'react';
 import './Favourites.css';
 import { useAppSelector } from '../../app/hooks';
-import FavouritesItem from '../favourites-item/FavouritesItem';
+import FavouritesItem from '../../components/favourites-item/FavouritesItem';
 
 const Favourites = () => {
 

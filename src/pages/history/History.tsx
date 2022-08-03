@@ -4,7 +4,7 @@ import './History.css';
 import { APP_PATHS } from '../../constants/const';
 import { useAppDispatch, useAppSelector, useClass } from '../../app/hooks';
 import { removeHistory } from '../../app/reducers/user-slice';
-import HistoryItem from '../history-item/HistoryItem';
+import HistoryItem from '../../components/history-item/HistoryItem';
 import { ThemeContext } from '../../App';
 
 const History = (): JSX.Element => {
