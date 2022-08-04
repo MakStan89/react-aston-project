@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import './HistoryItem.css';
 import { HistoryTypes} from '../../types/types';
 import { ThemeContext } from '../../App';
+import { useClass } from '../../app/hooks';
 
 
 const HistoryItem = ({ card, index }: HistoryTypes): JSX.Element => {
 
 	const { strDrink, strCategory, strAlcoholic } = card;
 	const theme = useContext(ThemeContext);
-	const historyItemTheme = (theme === 'bisque' ? 'history-item theme-bisque' : theme === 'white' ? 'history-item theme-white' : 'history-item theme-skyblue');
+	const historyItemTheme = useClass([theme, 'history-item']);
 
 	return (
 		<div className={historyItemTheme}>

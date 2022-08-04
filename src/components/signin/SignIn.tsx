@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import './SignIn.css';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import useValidation from '../../app/hooks';
+import { useValidation } from '../../app/hooks';
 import { signIn } from '../../app/reducers/user-slice';
 import { loadUser, loginVerification, emailVerification } from '../../app/localStorage';
 import { APP_PATHS } from '../../constants/const';

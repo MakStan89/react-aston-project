@@ -6,7 +6,7 @@ import { ThemeContext } from '../../App';
 import CardsBoard from '../cards-board/CardsBoard';
 import { useGetCardsQuery } from '../../app/reducers/api-slice';
 import { addHistory } from '../../app/reducers/user-slice';
-import { useAppSelector, useAppDispatch } from '../../app/hooks';
+import { useAppSelector, useAppDispatch, useClass } from '../../app/hooks';
 import { takeUsedFiltres } from '../../app/takeUsedFiltres';
 import { changeAllFilters } from '../../app/reducers/filter-slice';
 import { CardInfoTypes } from '../../types/types';
@@ -42,10 +42,8 @@ const Search = () => {
 	const currentInput = Object.values(usedFiltres)[0];
 	const { data, isLoading, isError } = useGetCardsQuery(currentInput);
 	const theme = useContext(ThemeContext);
-	const searchSubmitTheme = (theme === 'bisque' ? 'search-form__submit button theme-bisque' : theme === 'white'
-		? 'search-form__submit button theme-white' : 'search-form__submit button theme-skyblue');
-	const searchResetTheme = (theme === 'bisque' ? 'search-form__reset button theme-bisque' : theme === 'white'
-		? 'search-form__reset button theme-white' : 'search-form__reset button theme-skyblue');
+	const searchSubmitTheme = useClass([theme, 'search-form__submit button']);
+	const searchResetTheme = useClass([theme, 'search-form__reset button']);
 	
 	return (
 		<div className='search'>

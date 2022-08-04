@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import './Main.css';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '../../app/hooks';
+import { useAppDispatch, useClass } from '../../app/hooks';
 import { addHistory } from '../../app/reducers/user-slice';
 import { changeAllFilters } from '../../app/reducers/filter-slice';
 import { ThemeContext } from '../../App';
@@ -31,8 +31,8 @@ const Main = (): JSX.Element => {
 		if (ev.keyCode === KEY_CODES.enter) navigateTo(inputValue);
 	};
 	const theme = useContext(ThemeContext);
-	const mainTheme = (theme === 'bisque' ? 'main-search__button button theme-bisque' : theme === 'white' ? 'main-search__button button theme-white' : 'main-search__button button theme-skyblue');
-
+	const mainTheme = useClass([theme, 'main-search__button button']);
+	
 	return (
 		<div className='main'>
 			<div className='main__text'>
