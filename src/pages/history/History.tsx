@@ -2,16 +2,17 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './History.css';
 import { APP_PATHS } from '../../constants/const';
-import { useAppDispatch, useAppSelector, useClass } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { removeHistory } from '../../app/reducers/user-slice';
-import HistoryItem from '../history-item/HistoryItem';
+import HistoryItem from '../../components/history-item/HistoryItem';
 import { ThemeContext } from '../../App';
+import { classChange } from '../../app/classChange';
 
 const History = (): JSX.Element => {
 	const dispatch = useAppDispatch();
 	const user = useAppSelector((state) => state.userState.user);
 	const theme = useContext(ThemeContext);
-	const historyTheme = useClass([theme, 'history-clear button']);
+	const historyTheme = classChange([theme, 'history-clear button']);
 
 	return (
 		<div className='history'>

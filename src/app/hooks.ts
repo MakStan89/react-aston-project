@@ -2,16 +2,6 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { useState, useRef } from 'react';
 import type { RootState, AppDispatch } from './store';
 
-export const useClass = ([context, baseClass]: [string, string]) => {
-	if (context === 'bisque') {
-		return `${baseClass} theme-bisque`
-	} if (context === 'white') {
-		return `${baseClass} theme-white`
-	} else {
-		return `${baseClass} theme-skyblue`
-	}
-}
-
 export const useValidation = (inputType: string) => {
 	const inputRef = useRef<HTMLInputElement>(null);
 	const [isInvalid, setIsInvalid] = useState(false);

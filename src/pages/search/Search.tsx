@@ -3,12 +3,13 @@ import { createSearchParams, useSearchParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useContext } from 'react';
 import { ThemeContext } from '../../App';
-import CardsBoard from '../cards-board/CardsBoard';
+import CardsBoard from '../../components/cards-board/CardsBoard';
 import { useGetCardsQuery } from '../../app/reducers/api-slice';
 import { addHistory } from '../../app/reducers/user-slice';
-import { useAppSelector, useAppDispatch, useClass } from '../../app/hooks';
+import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { takeUsedFiltres } from '../../app/takeUsedFiltres';
 import { changeAllFilters } from '../../app/reducers/filter-slice';
+import { classChange } from '../../app/classChange';
 import { CardInfoTypes } from '../../types/types';
 import { defaultFiltersValues } from '../../filters/filters';
 import { ALCOHOLIC, CATEGORY } from '../../constants/const';
@@ -42,8 +43,8 @@ const Search = () => {
 	const currentInput = Object.values(usedFiltres)[0];
 	const { data, isLoading, isError } = useGetCardsQuery(currentInput);
 	const theme = useContext(ThemeContext);
-	const searchSubmitTheme = useClass([theme, 'search-form__submit button']);
-	const searchResetTheme = useClass([theme, 'search-form__reset button']);
+	const searchSubmitTheme = classChange([theme, 'search-form__submit button']);
+	const searchResetTheme = classChange([theme, 'search-form__reset button']);
 	
 	return (
 		<div className='search'>
