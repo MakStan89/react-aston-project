@@ -6,4 +6,4 @@ export const classChange = ([context, baseClass]: [string, string]) => {
 	} else {
 		return `${baseClass} theme-skyblue`
 	}
-}
+};
