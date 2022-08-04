@@ -8,7 +8,7 @@ React
 Реализована хотя бы одна форма (Search, SignIn, SignUp)
 Есть применение Контекст API (App)
 Есть применение предохранителя (ErrorBoundary)
-Есть хотя бы один кастомный хук (useClass, useValidation)
+Есть хотя бы один кастомный хук (useValidation)
 Хотя бы несколько компонентов используют PropTypes (FavouritesItem, HistoryItem)
 Поиск не должен триггерить много запросов к серверу
 
